@@ -1,0 +1,53 @@
+<div class="posts-container">
+    <div class="header-with-back">
+        <h2 *ngIf="!user() && !isTableMode()">ყველა პოსტი</h2>
+        <div *ngIf="user() as user" class="user-posts-header">
+            <h2>{{ user.name }}-ის პოსტები</h2>
+            <button (click)="goBack()" class="btn back-btn">უკან</button>
+        </div>
+    </div>
+
+    <div *ngIf="error()" class="error-message">{{ error() }}</div>
+
+    <div *ngIf="!isTableMode()" class="cards-container">
+        <div *ngFor="let post of posts()" class="card">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.body | slice : 0 : 100 }}...</p>
+            <button class="btn details-btn" (click)="showPostDetails(post)">
+                დეტალურად
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="isTableMode()" class="table-container">
+        <h2 *ngIf="!error()">ყველა პოსტი</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>მომხმარებლის სახელი</th>
+                    <th>პოსტის სათაური</th>
+                    <th>ქმედება</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts()">
+                    <td data-label="სახელი">{{ post.user?.name || "N/A" }}</td>
+                    <td data-label="სათაური">{{ post.title }}</td>
+                    <td data-label="">
+                        <button class="btn details-btn" (click)="showPostDetails(post)">
+                            დეტალურად
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="selectedPost()" class="popup-overlay" (click)="closePopup()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="closePopup()">&times;</button>
+        <h3>{{ selectedPost()?.title }}</h3>
+        <p>{{ selectedPost()?.body }}</p>
+    </div>
+</div>

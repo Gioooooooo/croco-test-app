@@ -1,0 +1,15 @@
+<div class="todos-container" *ngIf="user() as user">
+    <div class="header-with-back">
+        <h2>{{ user.name }}-ის Todo სია</h2>
+        <button (click)="goBack()" class="btn back-btn">უკან</button>
+    </div>
+    <div *ngIf="error()" class="error-message">{{ error() }}</div>
+    <ul>
+        <li *ngFor="let todo of todos()" [ngClass]="{ completed: todo.completed }">
+            {{ todo.title }}
+        </li>
+    </ul>
+</div>
+<div *ngIf="!user() && error()" class="error-message">
+    {{ error() }}
+</div>

@@ -1,0 +1,12 @@
+<header class="app-header">
+    <div class="header-content">
+        <a routerLink="/" class="site-title">Croco test app</a>
+        <div class="date-time" *ngIf="currentDateTime() as now">
+            {{ now | date:'fullDate' }} | {{ now | date:'mediumTime' }}
+        </div>
+    </div>
+    <nav class="navigation">
+        <a routerLink="/users" routerLinkActive="active-link">მომხმარებლები</a>
+        <a routerLink="/posts" routerLinkActive="active-link">პოსტები</a>
+    </nav>
+</header>

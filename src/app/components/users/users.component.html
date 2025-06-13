@@ -1,0 +1,30 @@
+<div class="users-container">
+    <h2>მომხმარებლები</h2>
+    <input [formControl]="searchControl" placeholder="ძიება სახელით, გვარით ან მეილით..." class="search-input">
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>სახელი / გვარი</th>
+                    <th>ტელეფონი</th>
+                    <th>მეილი</th>
+                    <th>კომპანია</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of filteredUsers()">
+                    <td data-label="სახელი / გვარი">{{ user.name }}</td>
+                    <td data-label="ტელეფონი">{{ user.phone }}</td>
+                    <td data-label="მეილი">{{ user.email }}</td>
+                    <td data-label="კომპანია">{{ user.company.name }}</td>
+                    <td data-label="" class="actions">
+                        <a [routerLink]="['/users', user.id, 'posts']" class="btn posts-btn">პოსტები</a>
+                        <a [routerLink]="['/users', user.id, 'todos']" class="btn todos-btn">Todo List</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

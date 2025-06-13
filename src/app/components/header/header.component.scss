@@ -1,0 +1,44 @@
+.app-header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
+  .date-time {
+    font-size: 1rem;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-left: 25%;
+  }
+
+  .navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+
+    &:hover,
+    &.active-link {
+      background-color: #555;
+    }
+  }
+}
