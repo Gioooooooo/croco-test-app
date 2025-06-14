@@ -1,3 +1,5 @@
+@import "../../../styles/mixins";
+
 .posts-container {
   .header-with-back {
     margin-bottom: 1rem;
@@ -13,19 +15,8 @@
   }
 
   .btn.back-btn {
+    @include btn-base;
     background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s ease-in-out;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 
   .cards-container {
@@ -64,14 +55,15 @@
   }
 
   .btn.details-btn {
+    @include btn-base;
     background-color: #17a2b8;
-    color: white;
-    border: none;
     padding: 0.5rem;
-    border-radius: 4px;
-    cursor: pointer;
     margin-top: 1rem;
   }
+}
+
+.table-container {
+  @include responsive-table;
 }
 
 .popup-overlay {
@@ -93,6 +85,10 @@
   max-width: 500px;
   width: 90%;
   position: relative;
+  @media (max-width: 400px) {
+    width: 70%;
+    margin: auto;
+  }
 }
 
 .close-btn {
@@ -103,36 +99,4 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-}
-
-@media screen and (max-width: 980px) {
-  .table-container {
-    table {
-      border: 0;
-
-      thead {
-        display: none;
-      }
-
-      tr {
-        display: block;
-        margin-bottom: 0.625em;
-        border-bottom: 2px solid #ddd;
-      }
-
-      td {
-        display: flex;
-        justify-content: space-between;
-        text-align: right;
-        border-bottom: 1px dotted #ccc;
-
-        &::before {
-          content: attr(data-label);
-          font-weight: bold;
-          text-transform: uppercase;
-          text-align: left;
-        }
-      }
-    }
-  }
 }
