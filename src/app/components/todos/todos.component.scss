@@ -1,3 +1,5 @@
+@import "../../../styles/mixins";
+
 .todos-container {
   .header-with-back {
     display: flex;
@@ -9,19 +11,8 @@
   }
 
   .btn.back-btn {
+    @include btn-base;
     background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s ease-in-out;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 
   ul {
