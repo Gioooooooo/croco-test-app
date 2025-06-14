@@ -27,6 +27,9 @@
     gap: 1rem;
     margin-top: 1rem;
     padding-left: 25%;
+    @media (max-width: 400px) {
+      padding-left: 0;
+    }
   }
 
   .navigation a {
