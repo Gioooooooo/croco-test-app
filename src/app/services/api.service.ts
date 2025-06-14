@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, forkJoin } from 'rxjs';
 import { catchError, finalize, shareReplay, map } from 'rxjs/operators';
@@ -12,12 +12,9 @@ import { API_URL } from '../app.config';
 export class ApiService {
   private users$?: Observable<User[]>;
   private posts$?: Observable<Post[]>;
-
-  constructor(
-    private http: HttpClient,
-    @Inject(API_URL) private apiUrl: string,
-    private loaderService: LoaderService
-  ) {}
+  private loaderService = inject(LoaderService);
+  private http = inject(HttpClient);
+  private apiUrl = inject(API_URL);
 
   getUsers(): Observable<User[]> {
     if (!this.users$) {

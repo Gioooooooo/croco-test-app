@@ -9,7 +9,6 @@ import { Post } from '../../models/models';
 
 @Component({
   selector: 'app-posts',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],

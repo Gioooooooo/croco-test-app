@@ -8,7 +8,6 @@ import { User } from '../../models/models';
 
 @Component({
   selector: 'app-users',
-  standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],

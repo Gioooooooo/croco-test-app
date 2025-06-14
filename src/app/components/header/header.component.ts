@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

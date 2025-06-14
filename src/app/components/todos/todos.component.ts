@@ -9,7 +9,6 @@ import { Todo, User } from '../../models/models';
 
 @Component({
   selector: 'app-todos',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
