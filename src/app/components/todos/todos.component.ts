@@ -36,7 +36,7 @@ export class TodosComponent {
     this.userId$.pipe(
       switchMap((userId) => this.apiService.getTodosByUserId(userId)),
       catchError((err) => {
-        this.error.set(`Could not load todos. ${err.message}`);
+        this.error.set(`დაფიქსირდა ჩატვირთვისას შეცდომა. ${err.message}`);
         return of([]);
       })
     ),

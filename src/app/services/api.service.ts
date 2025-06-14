@@ -21,8 +21,8 @@ export class ApiService {
       this.loaderService.show();
       this.users$ = this.http.get<User[]>(`${this.apiUrl}/users`).pipe(
         catchError((error) => {
-          console.error('Error fetching users:', error);
-          return throwError(() => new Error('Could not load users.'));
+          console.error('იუზერების პოვნა ვერ მოხდა:', error);
+          return throwError(() => new Error('იუზერების პოვნა ვერ მოხდა.'));
         }),
         finalize(() => this.loaderService.hide()),
         shareReplay({ bufferSize: 1, refCount: true })
@@ -35,8 +35,11 @@ export class ApiService {
     this.loaderService.show();
     return this.http.get<User>(`${this.apiUrl}/users/${id}`).pipe(
       catchError((error) => {
-        console.error(`Error fetching user with id ${id}:`, error);
-        return throwError(() => new Error('User not found'));
+        console.error(
+          `იუზერის აიდის პოვნისას დაფიქსირდა შეცდომა ${id}:`,
+          error
+        );
+        return throwError(() => new Error('მომხმარებელი ვერ იპოვა'));
       }),
       finalize(() => this.loaderService.hide())
     );
@@ -59,8 +62,8 @@ export class ApiService {
           );
         }),
         catchError((error) => {
-          console.error('Error fetching posts:', error);
-          return throwError(() => new Error('Could not load posts.'));
+          console.error('პოსტები ვერ ჩაიტვირთა:', error);
+          return throwError(() => new Error('პოსტები ვერ ჩაიტვირთა.'));
         }),
         finalize(() => this.loaderService.hide()),
         shareReplay({ bufferSize: 1, refCount: true })
@@ -73,7 +76,10 @@ export class ApiService {
     this.loaderService.show();
     return this.http.get<Post[]>(`${this.apiUrl}/users/${userId}/posts`).pipe(
       catchError((error) => {
-        console.error(`Error fetching posts for user ${userId}:`, error);
+        console.error(
+          `შეცდომა დაფიქსირდა იუზერების ჩამოტვირთვისას ${userId}:`,
+          error
+        );
         return throwError(
           () =>
             new Error('სამწუხაროდ დაფიქსირდა შეცდომა მონაცემები ვერ ჩაიტვირთა.')
@@ -87,7 +93,10 @@ export class ApiService {
     this.loaderService.show();
     return this.http.get<Todo[]>(`${this.apiUrl}/users/${userId}/todos`).pipe(
       catchError((error) => {
-        console.error(`Error fetching todos for user ${userId}:`, error);
+        console.error(
+          `შეცდომა დაფიქსირდა იუზერების ჩამოტვირთვისას ${userId}:`,
+          error
+        );
         return throwError(
           () =>
             new Error('სამწუხაროდ დაფიქსირდა შეცდომა მონაცემები ვერ ჩაიტვირთა.')
